@@ -1,0 +1,19 @@
+[
+    {
+        "billId": 1,
+        "billTitle": "Electric - June-Oct 16",
+        "amount": 11.25,
+        "date": "June 19, 2016",
+        "additionalInfo": "Electricidada",
+        "payerId":1
+        
+    },
+    {
+        "billId": 1,
+        "billTitle": "Water - June-Oct 16",
+        "amount": 28.25,
+        "date": "May 19, 2016",
+        "additionalInfo": "Electricidada",
+        "payerId":2
+    }
+]

@@ -1,0 +1,40 @@
+<div class="panel panel-primary" *ngIf='bill'>
+    <div class="panel-heading">
+        {{pageTitle + ':' + bill.billTitle}}
+    </div>
+    <div class='panel-body'>
+        <div class='row' *ngIf='bill'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Bill Title:</div>
+                    <div class='col-md-6'>{{bill.billTitle}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Payed By:</div>
+                    <div class='col-md-6'>{{userName}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Amount:</div>
+                    <div class='col-md-6'>{{bill.amount}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Date:</div>
+                    <div class='col-md-6'>{{bill.date}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Additional Information:</div>
+                    <div class='col-md-6'>{{bill.additionalInfo}}</div>
+                </div>
+            </div>
+
+ 
+        </div>
+    </div>
+
+
+    <div class="panel-footer">
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+    </div>
+</div>
