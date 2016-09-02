@@ -1,5 +1,9 @@
-import {Component, OnInit} from 'angular2/core';
-import { RouteParams, Router } from 'angular2/router';
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { Subscription } from 'rxjs/Subscription';
+
 import { BillService } from './bill.service';
 import { UserService } from '../users/user.service';
 import { IBill } from './bill';
@@ -7,22 +11,23 @@ import { IBill } from './bill';
 @Component({
     templateUrl: 'app/bills/bill-detail.component.html'
 })
-export class BillDetailComponent implements OnInit{
+export class BillDetailComponent implements OnInit, OnDestroy{
     pageTitle: string = 'Bill Detail';
     bill: IBill;
     errorMessage: string;
     private sub: any;
     userName: string;
 
-    constructor(private _routeParams: RouteParams, private _router: Router, private _billService: BillService, private _userService: UserService){
+    constructor(private route: ActivatedRoute,
+        private router: Router, private _billService: BillService, private _userService: UserService) {
     }
 
     ngOnInit() {
-        if (!this.bill) {
-            let id = +this._routeParams.get('id');
-            // this.pageTitle += `: ${id}`;
-            this.getBill(id);
-        }
+        this.sub = this.route.params.subscribe(
+            params => {
+                let id = +params['id'];
+                this.getBill(id);
+            });
     }
 
 
@@ -47,6 +52,11 @@ export class BillDetailComponent implements OnInit{
     }
 
     onBack(): void{
-        this._router.navigate(['Bills']);
+        this.router.navigate(['bills']);
     }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
 }

@@ -1,32 +1,42 @@
 {
-  "name": "product-management",
+  "name": "roomate-site",
   "version": "1.0.0",
-  "author": "Deborah Kurata",
-  "description": "Package for the Acme Product Management sample application",
+  "author": "Guy Khmelnitsky",
+  "description": "Package for the Roomate Site application",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
     "typings": "typings",
     "postinstall": "typings install"
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.15",
+    "@angular/common": "2.0.0-rc.5",
+    "@angular/compiler": "2.0.0-rc.5",
+    "@angular/core": "2.0.0-rc.5",
+    "@angular/forms": "0.3.0",
+    "@angular/http": "2.0.0-rc.5",
+    "@angular/platform-browser": "2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
+    "@angular/router": "3.0.0-rc.1",
     "bootstrap": "^3.3.6",
-    "es6-shim": "^0.35.0",
+    "core-js": "^2.4.0",
     "jquery": "^3.1.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "systemjs": "0.19.26",
-    "zone.js": "0.6.10"
+    "ng2-bs3-modal": "^0.7.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "systemjs": "0.19.27",
+    "zone.js": "^0.6.12"
   },
   "devDependencies": {
-    "concurrently": "^2.0.0",
+    "concurrently": "^2.2.0",
     "lite-server": "^2.2.0",
+    "tslint": "^3.7.4",
     "typescript": "^1.8.10",
-    "typings": "^0.7.12"
+    "typings": "^1.0.4"
   },
   "repository": {}
 }

@@ -68,29 +68,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\bills\bill-create.component.html" />
     <Content Include="app\bills\bill-detail.component.html" />
-    <Content Include="app\bills\bill-detail.component.js" />
-    <Content Include="app\bills\bill-filter.pipe.js" />
     <Content Include="app\bills\bill-list.component.css" />
     <Content Include="app\bills\bill-list.component.html" />
-    <Content Include="app\bills\bill-list.component.js" />
-    <Content Include="app\bills\bill.js" />
-    <Content Include="app\bills\bill.service.js" />
-    <Content Include="app\users\user.js" />
-    <Content Include="app\users\user.service.js" />
+    <Content Include="favicon.ico" />
     <Content Include="packages.config" />
     <Content Include="api\products\products.json" />
-    <Content Include="app\home\welcome.component.js.map" />
     <Content Include="package.json" />
+    <Content Include="systemjs.config.js" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
-    <Content Include="app\bills\bill-detail.component.js.map" />
-    <Content Include="app\bills\bill-filter.pipe.js.map" />
-    <Content Include="app\bills\bill-list.component.js.map" />
-    <Content Include="app\bills\bill.js.map" />
-    <Content Include="app\bills\bill.service.js.map" />
-    <Content Include="app\users\user.js.map" />
-    <Content Include="app\users\user.service.js.map" />
+    <Content Include="tslint.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -102,7 +91,6 @@
     <Content Include="app\app.component.css" />
     <Content Include="app\assets\images\logo.jpg" />
     <Content Include="app\home\welcome.component.html" />
-    <Content Include="app\home\welcome.component.js" />
     <Content Include="app\shared\star.component.css" />
     <Content Include="app\shared\star.component.html" />
     <Content Include="index.html" />
@@ -113,13 +101,20 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\bills\bill-create.component.ts" />
     <TypeScriptCompile Include="app\bills\bill-detail.component.ts" />
     <TypeScriptCompile Include="app\bills\bill-filter.pipe.ts" />
     <TypeScriptCompile Include="app\bills\bill-list.component.ts" />
+    <TypeScriptCompile Include="app\bills\bill.module.ts" />
+    <TypeScriptCompile Include="app\bills\bill.routing.ts" />
     <TypeScriptCompile Include="app\bills\bill.service.ts" />
     <TypeScriptCompile Include="app\bills\bill.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\shared\star.component.ts" />
+    <TypeScriptCompile Include="app\shared\star.module.ts" />
     <TypeScriptCompile Include="app\users\user.service.ts" />
     <TypeScriptCompile Include="app\users\user.ts" />
   </ItemGroup>
