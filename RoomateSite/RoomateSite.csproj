@@ -72,14 +72,17 @@
     <Content Include="app\bills\bill-detail.component.html" />
     <Content Include="app\bills\bill-list.component.css" />
     <Content Include="app\bills\bill-list.component.html" />
+    <Content Include="app\users\user-list.component.css" />
+    <Content Include="app\users\user-list.component.html" />
     <Content Include="favicon.ico" />
     <Content Include="packages.config" />
-    <Content Include="api\products\products.json" />
     <Content Include="package.json" />
     <Content Include="systemjs.config.js" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="tslint.json" />
+    <Content Include="api\bills\bills.json" />
+    <Content Include="api\users\users.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -105,7 +108,8 @@
     <TypeScriptCompile Include="app\app.routing.ts" />
     <TypeScriptCompile Include="app\bills\bill-create.component.ts" />
     <TypeScriptCompile Include="app\bills\bill-detail.component.ts" />
-    <TypeScriptCompile Include="app\bills\bill-filter.pipe.ts" />
+    <TypeScriptCompile Include="app\bills\bill-filter-date.pipe.ts" />
+    <TypeScriptCompile Include="app\bills\bill-filter-title.pipe.ts" />
     <TypeScriptCompile Include="app\bills\bill-list.component.ts" />
     <TypeScriptCompile Include="app\bills\bill.module.ts" />
     <TypeScriptCompile Include="app\bills\bill.routing.ts" />
@@ -115,6 +119,9 @@
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\shared\star.component.ts" />
     <TypeScriptCompile Include="app\shared\star.module.ts" />
+    <TypeScriptCompile Include="app\users\user-list.component.ts" />
+    <TypeScriptCompile Include="app\users\user.module.ts" />
+    <TypeScriptCompile Include="app\users\user.routing.ts" />
     <TypeScriptCompile Include="app\users\user.service.ts" />
     <TypeScriptCompile Include="app\users\user.ts" />
   </ItemGroup>

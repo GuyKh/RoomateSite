@@ -8,13 +8,15 @@ import { WelcomeComponent } from './home/welcome.component';
 
 /* Feature Modules */
 import { BillModule } from './bills/bill.module';
+import { UserModule } from './users/user.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         routing,
-        BillModule
+        BillModule,
+        UserModule
     ],
     declarations: [
         AppComponent,

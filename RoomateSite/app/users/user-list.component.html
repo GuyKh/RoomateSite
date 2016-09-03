@@ -1,0 +1,29 @@
+﻿<div class="row" *ngFor="let user of users">
+    <div class="col-lg-5">
+        <div class="media">
+            <!--<a class="pull-left" href="#">
+                <img class="media-object dp img-circle" src="http://www.huffmancode.com/img/hardik.jpg" style="width: 100px;height:100px;">
+            </a>-->
+            <div class="media-body">
+                <h4 class="media-heading">{{user.userName}} <small> {{user.phone}}</small></h4>
+                <h5>UserID: {{user.userId}}</h5>
+                <hr style="margin:8px auto">
+            </div>
+            
+            <div class="col-sm-5">
+     <button type="button" class="btn btn-large btn-block btn-info">Edit User</button>     
+            </div>
+            
+            <div class="col-sm-5">
+            <button type="button" class="btn btn-large btn-block btn-danger">Delete User</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" col-md-2">
+        <button type="button" class="btn btn-large btn-block btn-primary">Add New User</button>
+</div>
+
+

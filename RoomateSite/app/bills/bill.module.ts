@@ -6,7 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { billRouting} from './bill.routing';
 import { BillListComponent } from './bill-list.component';
 import { BillDetailComponent } from './bill-detail.component';
-import { BillFilterPipe } from './bill-filter.pipe';
+import { BillTitleFilterPipe } from './bill-filter-title.pipe';
+import { BillDateFilterPipe } from './bill-filter-date.pipe';
 import { BillService } from './bill.service';
 import { UserService } from '../users/user.service';
 
@@ -19,7 +20,8 @@ import { UserService } from '../users/user.service';
   declarations: [
     BillListComponent,
     BillDetailComponent,
-    BillFilterPipe
+    BillTitleFilterPipe,
+    BillDateFilterPipe
   ],
   providers: [
     BillService, 
