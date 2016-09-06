@@ -27,6 +27,18 @@ export class UserService {
             .map((users: IUser[]) => users.find(p => p.userId === id));
     }
 
+    addOrUpdateUser(user: IUser){
+        if (user.userId > 0){
+            console.log('Update user with id:'+user.userId);
+        } else {
+            console.log('Create a new User with username:'+user.userName + " and phone: "+user.phone);
+        }
+    }
+
+    deleteUser(userId: number){
+        console.log("Delete User: " + userId);
+    }
+
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
