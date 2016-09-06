@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="app\bills\bill-create.component.html" />
     <Content Include="app\bills\bill-detail.component.html" />
+    <Content Include="app\bills\bill-graph.component.html" />
     <Content Include="app\bills\bill-list.component.css" />
     <Content Include="app\bills\bill-list.component.html" />
     <Content Include="app\users\user-list.component.css" />
@@ -115,6 +116,7 @@
     <TypeScriptCompile Include="app\bills\bill.routing.ts" />
     <TypeScriptCompile Include="app\bills\bill.service.ts" />
     <TypeScriptCompile Include="app\bills\bill.ts" />
+    <TypeScriptCompile Include="app\bills\bill-graph.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\shared\star.component.ts" />
