@@ -12,8 +12,8 @@
                 <div class="form-group">
                     <label for="additionalInfo" class="form-control-label">Payed By:</label>
                     
-                        <select name="payerId" [(ngModel)]="payerId">
-                            <option *ngFor="let user of users" value={{user.userId}}>
+                        <select name="payerIdNum" [(ngModel)]="payerId">
+                            <option *ngFor="let user of users" [value]="user.userId">
                                 {{user.userName}}
                             </option>
                         </select>

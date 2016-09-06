@@ -17,11 +17,20 @@ export class BillService {
     getBills(): Observable<IBill[]> {
         return this._http.get(this._billsUrl)
             .map((response: Response) => <IBill[]>response.json())
+            .map(this.extractDate)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
+    private extractDate(res: any) : IBill[] {
+        if (!res)
+            return [];
 
+        res.forEach((d) => {
+            d.date = new Date(d.date);
+        });
+        return res;
+    }
 
     getBill(id: number): Observable<IBill> {
         return this.getBills()

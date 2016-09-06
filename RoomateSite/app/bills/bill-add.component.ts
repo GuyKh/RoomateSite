@@ -26,8 +26,12 @@ export class AddBillComponent {
         this.date.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1);
     }
 
-    get humanDate()  {
-        return this.date.toISOString().substring(0, 10);
+    get humanDate() {
+        if (this.date && this.date instanceof Date)
+            return this.date.toISOString().substring(0, 10);
+        else if (this.date && this.date instanceof String)
+            return this.date;
+        else return "";
     }
 
     constructor(private _billService: BillService, private _userService:UserService) {

@@ -35,6 +35,7 @@
                         <th>Payed By</th>
                         <th>Date</th>
                         <th>Additional Information</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,6 +49,10 @@
                         <td>{{ bill.payerId }}
                         <td>{{ bill.date | date: 'yyyy-MM-dd'  }}</td>
                         <td>{{ bill.additionalInformation  }}</td>
+                        <td>
+                            <a (click)="addBill(bill.billId)">Edit
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
