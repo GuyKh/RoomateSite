@@ -11,11 +11,11 @@
             </div>
             
             <div class="col-sm-5">
-     <button type="button" class="btn btn-large btn-block btn-info">Edit User</button>     
+     <button type="button" class="btn btn-large btn-block btn-info" (click)="addUser(user.userId)" >Edit User</button>     
             </div>
             
             <div class="col-sm-5">
-            <button type="button" class="btn btn-large btn-block btn-danger">Delete User</button>
+            <button type="button" class="btn btn-large btn-block btn-danger" (click)="deleteUser(user.userId)">Delete User</button>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
 
 
 <div class=" col-md-2">
-        <button type="button" class="btn btn-large btn-block btn-primary">Add New User</button>
+        <button type="button" class="btn btn-large btn-block btn-primary" (click)="addUser(-1)">Add New User</button>
 </div>
 
-
+<user-add></user-add>
