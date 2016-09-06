@@ -37,6 +37,24 @@ export class BillService {
         return new Bill((maxId + 1), title, creator, amount, date, additionalInfo);
     }
 
+    addOrUpdateBill(bill: IBill) : IBill {
+
+        if (bill.billId == -1) {
+            var maxId: number;
+            this.getBills().map((bills: IBill[]) => maxId = Math.max.apply(Math, bills.map(function (o) { return o.billId; })));
+
+            bill.billId = maxId + 1;
+        }
+
+        console.log("Adding or Updating bill " + bill.billId);
+
+        return bill;
+    }
+
+    deleteBill(billId: number) {
+        console.log("Deleting Bill " + billId);
+    }
+
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

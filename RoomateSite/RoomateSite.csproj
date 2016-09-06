@@ -68,10 +68,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\bills\bill-create.component.html" />
+    <Content Include="app\bills\bill-add.component.html" />
     <Content Include="app\bills\bill-detail.component.html" />
     <Content Include="app\bills\bill-list.component.css" />
     <Content Include="app\bills\bill-list.component.html" />
+    <Content Include="app\users\user-add.component.html" />
     <Content Include="app\users\user-list.component.css" />
     <Content Include="app\users\user-list.component.html" />
     <Content Include="favicon.ico" />
@@ -106,7 +107,7 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
-    <TypeScriptCompile Include="app\bills\bill-create.component.ts" />
+    <TypeScriptCompile Include="app\bills\bill-add.component.ts" />
     <TypeScriptCompile Include="app\bills\bill-detail.component.ts" />
     <TypeScriptCompile Include="app\bills\bill-filter-date.pipe.ts" />
     <TypeScriptCompile Include="app\bills\bill-filter-title.pipe.ts" />
@@ -119,6 +120,7 @@
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\shared\star.component.ts" />
     <TypeScriptCompile Include="app\shared\star.module.ts" />
+    <TypeScriptCompile Include="app\users\user-add.component.ts" />
     <TypeScriptCompile Include="app\users\user-list.component.ts" />
     <TypeScriptCompile Include="app\users\user.module.ts" />
     <TypeScriptCompile Include="app\users\user.routing.ts" />

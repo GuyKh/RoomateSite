@@ -2,7 +2,7 @@ export interface IBill{
     billId: number;
     billTitle: string;
     amount: number;
-    date: string;
+    date: Date;
     payerId: number;
     additionalInfo: string;
     
@@ -15,7 +15,7 @@ export class Bill implements IBill{
         public billTitle: string,
         public payerId: number,
         public amount: number,
-        public date: string,
+        public date: Date,
         public additionalInfo: string)
         {}
   

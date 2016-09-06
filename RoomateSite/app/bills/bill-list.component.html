@@ -46,14 +46,16 @@
                         </td>
                         <td>{{ bill.amount }}</td>
                         <td>{{ bill.payerId }}
-                        <td>{{ bill.date  }}</td>
+                        <td>{{ bill.date | date: 'yyyy-MM-dd'  }}</td>
                         <td>{{ bill.additionalInformation  }}</td>
                     </tr>
                 </tbody>
             </table>
 
-
-            
+            <div class="col-md-2">
+                <button type="button" class="btn btn-large btn-block btn-primary" (click)="addBill(-1)">Add New Bill</button>
+            </div>
+            <bill-add></bill-add>
         </div>
     </div>
 </div>

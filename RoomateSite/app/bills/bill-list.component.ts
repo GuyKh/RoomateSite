@@ -1,4 +1,5 @@
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit, ViewChild }  from '@angular/core';
+import {AddBillComponent} from './bill-add.component';
 
 
 
@@ -7,7 +8,8 @@ import { BillService } from './bill.service';
 
 @Component({
     templateUrl: 'app/bills/bill-list.component.html',
-    styleUrls: ['app/bills/bill-list.component.css']
+    styleUrls: ['app/bills/bill-list.component.css'],
+    directives: [AddBillComponent]
 
 })
 export class BillListComponent implements OnInit {
@@ -23,12 +25,21 @@ export class BillListComponent implements OnInit {
         
     }
 
+    @ViewChild(AddBillComponent) addBillComponent: AddBillComponent;
+
+    addBill(billId: number):void {
+        this.addBillComponent.init(billId);
+        //this.addUserComponent.show();
+    }
+
     ngOnInit(): void {
        this._billService.getBills()
             .subscribe(
                 bills => this.bills = bills,
                 error => this.errorMessage = <any>error);
     }
+
+ 
 
 
 }
