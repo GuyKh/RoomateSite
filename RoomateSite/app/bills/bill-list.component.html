@@ -46,7 +46,7 @@
                             </a>
                         </td>
                         <td>{{ bill.amount }}</td>
-                        <td>{{ bill.payerId }}
+                        <td>{{ getUsernameById(bill.payerId) }}
                         <td>{{ bill.date | date: 'yyyy-MM-dd'  }}</td>
                         <td>{{ bill.additionalInformation  }}</td>
                         <td>
