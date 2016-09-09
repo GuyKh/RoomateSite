@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
@@ -17,20 +17,20 @@ export class BillService {
     getBills(): Observable<IBill[]> {
         return this._http.get(this._billsUrl)
             .map((response: Response) => <IBill[]>response.json())
-            .map(this.extractDate)
+            //.map(this.extractDate)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    private extractDate(res: any) : IBill[] {
-        if (!res)
-            return [];
+    // private extractDate(res: any) : IBill[] {
+    //     if (!res)
+    //         return [];
 
-        res.forEach((d) => {
-            d.date = new Date(d.date);
-        });
-        return res;
-    }
+    //     res.forEach((d) => {
+    //         d.date = new Date(d.date);
+    //     });
+    //     return res;
+    // }
 
     getBill(id: number): Observable<IBill> {
         return this.getBills()
@@ -43,7 +43,7 @@ export class BillService {
         this.getBills()
             .map((bills: IBill[]) => maxId = Math.max.apply(Math, bills.map(function(o) { return o.billId; })));
 
-        return new Bill((maxId + 1), title, creator, amount, date, additionalInfo);
+        return new Bill((maxId + 1), title, creator, amount, new Date(date), additionalInfo);
     }
 
     addOrUpdateBill(bill: IBill) : IBill {

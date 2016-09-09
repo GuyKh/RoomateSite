@@ -10,8 +10,7 @@ import { BillService } from './bill.service';
 
 @Component({
     templateUrl: 'app/bills/bill-list.component.html',
-    styleUrls: ['app/bills/bill-list.component.css'],
-    directives: [AddBillComponent]
+    styleUrls: ['app/bills/bill-list.component.css']
 
 })
 export class BillListComponent implements OnInit {

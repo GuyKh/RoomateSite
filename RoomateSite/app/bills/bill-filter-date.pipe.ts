@@ -27,6 +27,6 @@ export class BillDateFilterPipe implements PipeTransform {
         
 
         return value.filter((bill: IBill) =>
-            new Date(bill.date) >= fromDate && new Date(bill.date) <= toDate);
+            bill.date >= fromDate && bill.date <= toDate);
     }
 }

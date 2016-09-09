@@ -1,14 +1,14 @@
 ﻿import { Component, OnInit, ViewChild  }  from '@angular/core';
 
-import {AddUserComponent} from './user-add.component';
+
 
 import { IUser } from './user'
 import { UserService } from './user.service';
+import {AddUserComponent} from './user-add.component';
 
 @Component({
     templateUrl: 'app/users/user-list.component.html',
-    styleUrls: ['app/users/user-list.component.css'],
-    directives: [AddUserComponent] 
+    styleUrls: ['app/users/user-list.component.css'] 
 
 })
 export class UserListComponent implements OnInit {

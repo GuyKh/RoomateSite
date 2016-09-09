@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { userRouting} from './user.routing';
 import { UserListComponent } from './user-list.component';
 import { UserService } from './user.service';
+import {AddUserComponent} from './user-add.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { UserService } from './user.service';
         userRouting
     ],
     declarations: [
-        UserListComponent
+        UserListComponent,
+        AddUserComponent
     ],
     providers: [
         UserService

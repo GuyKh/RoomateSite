@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
+
 import { billRouting} from './bill.routing';
 import { BillListComponent } from './bill-list.component';
 import { BillDetailComponent } from './bill-detail.component';
@@ -10,6 +11,7 @@ import { BillTitleFilterPipe } from './bill-filter-title.pipe';
 import { BillDateFilterPipe } from './bill-filter-date.pipe';
 import { BillService } from './bill.service';
 import { UserService } from '../users/user.service';
+import { AddBillComponent } from './bill-add.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import { UserService } from '../users/user.service';
     BillListComponent,
     BillDetailComponent,
     BillTitleFilterPipe,
-    BillDateFilterPipe
+    BillDateFilterPipe,
+    AddBillComponent
   ],
   providers: [
     BillService, 
