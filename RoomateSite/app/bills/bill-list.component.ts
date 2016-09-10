@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild }  from '@angular/core';
 import {AddBillComponent} from './bill-add.component';
-
+import { BillChartComponent } from './bill-chart.component';
 
 
 import { IUser } from '../users/user';
@@ -22,12 +22,14 @@ export class BillListComponent implements OnInit {
     errorMessage: string;
     bills: IBill[];
     users: IUser[];
+    dirty:boolean = true;
 
     constructor(private _billService: BillService, private _userService : UserService){
         
     }
 
     @ViewChild(AddBillComponent) addBillComponent: AddBillComponent;
+    @ViewChild(BillChartComponent) billChartComponent: BillChartComponent;
 
     addBill(billId: number):void {
         this.addBillComponent.init(billId);
@@ -56,6 +58,21 @@ export class BillListComponent implements OnInit {
         }
 
         return "";
+    }
+
+    initGraph(bills : IBill[]) : void{
+        
+        if (this.billChartComponent.isVisible){
+            this.billChartComponent.hide();
+            return;
+        }
+        
+        if (this.dirty){
+            this.billChartComponent.initialize(bills);
+            
+        }
+        this.dirty = false;
+        this.billChartComponent.show();
     }
  
 

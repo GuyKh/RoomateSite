@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\bills\bill-add.component.html" />
+    <Content Include="app\bills\bill-chart.component.css" />
+    <Content Include="app\bills\bill-chart.component.html" />
     <Content Include="app\bills\bill-detail.component.html" />
     <Content Include="app\bills\bill-list.component.css" />
     <Content Include="app\bills\bill-list.component.html" />

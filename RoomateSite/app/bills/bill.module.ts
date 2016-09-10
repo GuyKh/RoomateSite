@@ -1,6 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -12,19 +12,22 @@ import { BillDateFilterPipe } from './bill-filter-date.pipe';
 import { BillService } from './bill.service';
 import { UserService } from '../users/user.service';
 import { AddBillComponent } from './bill-add.component';
+import { BillChartComponent } from './bill-chart.component';
 
 @NgModule({
   imports: [
     FormsModule,
     SharedModule,
-    billRouting
+    billRouting,
+    ChartsModule
   ],
   declarations: [
     BillListComponent,
     BillDetailComponent,
     BillTitleFilterPipe,
     BillDateFilterPipe,
-    AddBillComponent
+    AddBillComponent,
+    BillChartComponent
   ],
   providers: [
     BillService, 

@@ -23,9 +23,9 @@
                 <h3>Filtered by: {{listTitleFilter}} </h3>
             </div>
         </div>
-        
+
         <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
-        
+
         <div class='table-responsive'>
             <table class='table' *ngIf='bills && bills.length'>
                 <thead>
@@ -47,10 +47,11 @@
                         </td>
                         <td>{{ bill.amount }}</td>
                         <td>{{ getUsernameById(bill.payerId) }}
-                        <td>{{ bill.date | date: 'yyyy-MM-dd'  }}</td>
-                        <td>{{ bill.additionalInformation  }}</td>
+                        <td>{{ bill.date | date: 'yyyy-MM-dd' }}</td>
+                        <td>{{ bill.additionalInformation }}</td>
                         <td>
-                            <a (click)="addBill(bill.billId)">Edit
+                            <a (click)="addBill(bill.billId)">
+                                Edit
                             </a>
                         </td>
                     </tr>
@@ -61,6 +62,17 @@
                 <button type="button" class="btn btn-large btn-block btn-primary" (click)="addBill(-1)">Add New Bill</button>
             </div>
             <bill-add></bill-add>
+
+            <div class="col-md-3">
+                <button type="button" class="btn btn-large btn-block btn-primary" (click)="initGraph(bills)">{{!billChartComponent.isVisible ? 'Show' : 'Hide'}} Per User Graph</button>
+            </div>
+
+
+        </div>
+        <div class='row'>
+            <div>
+                <bill-chart></bill-chart>
+            </div>
         </div>
     </div>
 </div>
