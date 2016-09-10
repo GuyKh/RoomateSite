@@ -66,7 +66,8 @@
             <bill-add></bill-add>
 
             <div class="col-md-3">
-                <button type="button" class="btn btn-large btn-block btn-primary" (click)="initGraph(bills)">{{!billChartComponent.isVisible ? 'Show' : 'Hide'}} Per User Graph</button>
+                <button type="button" class="btn btn-large btn-block btn-primary" (click)="initUserGraph(bills)">{{!(billChartComponent.isVisible && billChartComponent.Mode == "Users") ? 'Show' : 'Hide'}} Per User Graph</button>
+                <button type="button" class="btn btn-large btn-block btn-primary" (click)="initCategoryGraph(bills)">{{!(billChartComponent.isVisible && billChartComponent.Mode == "Categories") ? 'Show' : 'Hide'}} Per Category Graph</button>
             </div>
 
 

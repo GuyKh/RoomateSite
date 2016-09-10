@@ -30,7 +30,7 @@ export class BillListComponent implements OnInit {
 
     @ViewChild(AddBillComponent) addBillComponent: AddBillComponent;
     @ViewChild(BillChartComponent) billChartComponent: BillChartComponent;
-
+    
     addBill(billId: number):void {
         this.addBillComponent.init(billId);
         //this.addUserComponent.show();
@@ -68,23 +68,38 @@ export class BillListComponent implements OnInit {
         return BillCategory[category];
     }
 
-    initGraph(bills : IBill[]) : void{
+    initUserGraph(bills : IBill[]) : void{
         
-        if (this.billChartComponent.isVisible){
+        if (this.billChartComponent.isVisible && this.billChartComponent.Mode == "Users"){
             this.billChartComponent.hide();
             return;
         }
         
-        if (this.dirty){
-            this.billChartComponent.initialize(bills);
-            
-        }
-        this.dirty = false;
+       
+       this.billChartComponent.Mode = "Users";
+       this.billChartComponent.initializeByUsers(bills);
+          
+        
+        
         this.billChartComponent.show();
     }
 
 
- 
+     initCategoryGraph(bills : IBill[]) : void{
+        
+        if (this.billChartComponent.isVisible && this.billChartComponent.Mode == "Categories"){
+            this.billChartComponent.hide();
+            return;
+        }
+        
+        
+        this.billChartComponent.Mode = "Categories";
+        this.billChartComponent.initializeByCategories(bills);
+               
+        
+        this.billChartComponent.show();
+    }
+
 
 
 }

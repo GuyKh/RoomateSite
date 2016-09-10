@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IBill } from './bill';
+import { IBill, BillCategory } from './bill';
 import { UserService } from '../users/user.service';
 import { IUser } from '../users/user';
 
@@ -13,6 +13,10 @@ export class BillChartComponent {
   // lineChart
   public isVisible : boolean;
   private users : IUser[];
+  public Mode : string;
+
+
+
 constructor (private _userService : UserService){
     this._userService.getUsers().subscribe(
         users => this.users = users,
@@ -20,7 +24,93 @@ constructor (private _userService : UserService){
     );
 }
 
-public initialize(bills : IBill[]) : void {
+public initializeByCategories(bills : IBill[]) : void {
+    let billsByCategory : IBill[][] = []
+
+    let minimumDate : Date = new Date();
+    let maximumDate : Date = new Date(-8640000000000000);
+
+
+    let totalBillsPerMonth : Array<Array<Array<number>>> = [];
+    
+    for (let i = 0 ; i<bills.length; i++){
+        let bill = bills[i];
+        
+        if (!bill)
+            continue;
+
+        if (!billsByCategory[bill.category])
+            billsByCategory[bill.category] = [];
+        billsByCategory[bill.category].push(bill);
+
+        if (bill.date < minimumDate)
+            minimumDate = bill.date;
+        if (bill.date > maximumDate)
+            maximumDate = bill.date;
+
+        if (!totalBillsPerMonth[bill.category])
+            totalBillsPerMonth[bill.category] = [];
+        if (!totalBillsPerMonth[bill.category][bill.date.getFullYear()])
+            totalBillsPerMonth[bill.category][bill.date.getFullYear()] = [];
+
+
+        if (!totalBillsPerMonth[bill.category][bill.date.getFullYear()][bill.date.getMonth()])
+            totalBillsPerMonth[bill.category][bill.date.getFullYear()][bill.date.getMonth()] = bill.amount;
+        else totalBillsPerMonth[bill.category][bill.date.getFullYear()][bill.date.getMonth()] += bill.amount;
+    
+
+    }
+
+    // Clear the array
+    this.lineChartData.length = 0;
+
+    // fill the gaps
+    for(let category in totalBillsPerMonth){
+        
+        let userData : number[] = new Array<number>();
+
+
+        for (let i = minimumDate.getFullYear(); i<= maximumDate.getFullYear(); i++){
+            for (let j = 1; j<=12; j++){
+                    if (!totalBillsPerMonth[category][i][j])
+                        userData.push(0);
+                    else 
+                        userData.push(totalBillsPerMonth[category][i][j]);                    
+                }
+            }
+
+
+            let lineCategoryData : { data : number[], label: string} = {};
+            lineCategoryData.data = userData;
+            lineCategoryData.label = BillCategory[category];
+            this.lineChartData.push(lineCategoryData); 
+        };
+    
+    
+        let labels : Array<string> = [];
+        for (let i = minimumDate.getFullYear(); i<=maximumDate.getFullYear(); i++){
+            labels.push("Jan " + i);
+            labels.push("Feb " + i);
+            labels.push("Mar " + i);
+            labels.push("Apr " + i);
+            labels.push("May " + i);
+            labels.push("Jun " + i);
+            labels.push("Jul " + i);
+            labels.push("Aug " + i);
+            labels.push("Sep " + i);
+            labels.push("Oct " + i);
+            labels.push("Nov " + i);
+            labels.push("Dec " + i);
+        }
+
+        this.lineChartLabels = labels;    
+
+
+
+
+}
+
+public initializeByUsers(bills : IBill[]) : void {
     let billsByUser : IBill[][] = []
 
     let minimumDate : Date = new Date();
@@ -76,10 +166,10 @@ public initialize(bills : IBill[]) : void {
             }
 
 
-            let lineData : { data : number[], label: string} = {};
-            lineData.data = userData;
-            lineData.label = this.getUserById(parseInt(payerId));
-            this.lineChartData.push(lineData); 
+            let lineUserData : { data : number[], label: string} = {};
+            lineUserData.data = userData;
+            lineUserData.label = this.getUserById(parseInt(payerId));
+            this.lineChartData.push(lineUserData); 
         };
     
     

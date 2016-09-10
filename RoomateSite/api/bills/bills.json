@@ -12,10 +12,19 @@
   {
     "billId": 2,
     "category": 2,
-    "billTitle": "Water - June-Oct 16",
+    "billTitle": "Water - Jun-Jul 16",
     "amount": 28.25,
-    "date": "2016-05-19T18:25:43.511Z",
-    "additionalInfo": "Electricidada",
+    "date": "2016-08-19T18:25:43.511Z",
+    "additionalInfo": "",
+    "payerId": 1
+  },
+  {
+    "billId": 3,
+    "category": 2,
+    "billTitle": "Water - Apr-May 16",
+    "amount": 31.25,
+    "date": "2016-06-19T18:25:43.511Z",
+    "additionalInfo": "",
     "payerId": 2
   }
 ]
