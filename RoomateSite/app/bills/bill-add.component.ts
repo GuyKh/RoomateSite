@@ -2,7 +2,7 @@
 import {BillService} from './bill.service';
 import {UserService} from '../users/user.service';
 import {IUser} from '../users/user';
-import {Bill} from './bill';
+import {Bill, BillCategory} from './bill';
 
 @Component({
     selector: 'bill-add',
@@ -10,6 +10,7 @@ import {Bill} from './bill';
 })
 export class AddBillComponent {
     private billId: number;
+    private category: BillCategory;
     private title: string;
     private payerId: number;
     private amount: number;
@@ -17,22 +18,11 @@ export class AddBillComponent {
     private additionalInfo: string;
     private errorMessage: string;
     private users : IUser[];
+
+    private categories: string[];
     public ModalIsVisible: boolean;
 
 
-    set humanDate(e) {
-        e = e.split('-');
-        let d = new Date(Date.UTC(e[0], e[1] - 1, e[2]));
-        this.date.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1);
-    }
-
-    get humanDate() {
-        if (this.date && this.date instanceof Date)
-            return this.date.toISOString().substring(0, 10);
-        else if (this.date && this.date instanceof String)
-            return this.date;
-        else return "";
-    }
 
     constructor(private _billService: BillService, private _userService:UserService) {
     }
@@ -43,6 +33,7 @@ export class AddBillComponent {
         if (billId == -1) {
             this.billId = billId;
             this.title = "";
+            this.category = BillCategory.Electric;
             this.payerId = this.getCurrentUserID();
             this.amount = 0;
             this.date = new Date(); //now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay();
@@ -58,7 +49,7 @@ export class AddBillComponent {
                     this.amount = bill.amount;
                     this.date = bill.date;
                     this.additionalInfo = bill.additionalInfo;
-
+                    this.category = bill.category;
                     this.show();
                 });
         }
@@ -67,9 +58,22 @@ export class AddBillComponent {
     show() {
         this.ModalIsVisible = true;
         this.getUsers();
+        this.categories = this.getCategories();
     }
 
-    getUsers() {
+    getCategories() : string[]{
+        var categories: string[] = [];
+        for(var n in BillCategory) {
+            var enumVal = BillCategory[parseInt(n)];
+            if (enumVal && typeof(enumVal) === "string")
+                categories.push(enumVal);
+        }
+        return categories;
+    }
+    
+    
+
+    getUsers() : void {
         this._userService.getUsers()
             .subscribe(
                 (users: IUser[]) => this.users = users,
@@ -88,7 +92,7 @@ export class AddBillComponent {
     }
 
     addOrUpdateBill() {
-        this._billService.addOrUpdateBill(new Bill(this.billId, this.title, this.payerId, this.amount, this.date, this.additionalInfo));
+        this._billService.addOrUpdateBill(new Bill(this.billId, this.title, this.category, this.payerId, this.amount, this.date, this.additionalInfo));
         this.hide();
     }
 
@@ -98,6 +102,29 @@ export class AddBillComponent {
     }
 
 
+    set humanDate(e) {
+        e = e.split('-');
+        let d = new Date(Date.UTC(e[0], e[1] - 1, e[2]));
+        this.date.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1);
+    }
 
+    get humanDate() {
+        if (this.date && this.date instanceof Date)
+            return this.date.toISOString().substring(0, 10);
+        else if (this.date && this.date instanceof String)
+            return this.date;
+        else return "";
+    }
+
+    set humanCategory(e) {
+        this.category = BillCategory[e];
+    }
+
+    get humanCategory() {
+        if (!this.category)
+            return this.categories[0];
+        else 
+            return this.categories[this.category];
+    }
 
 }

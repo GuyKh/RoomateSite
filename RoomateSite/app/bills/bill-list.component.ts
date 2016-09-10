@@ -5,7 +5,7 @@ import { BillChartComponent } from './bill-chart.component';
 
 import { IUser } from '../users/user';
 import { UserService } from '../users/user.service'
-import { IBill } from './bill'
+import { IBill, BillCategory } from './bill'
 import { BillService } from './bill.service';
 
 @Component({
@@ -60,6 +60,14 @@ export class BillListComponent implements OnInit {
         return "";
     }
 
+    showCategory(category : number) : string{
+        
+        if (!category)
+            return "";
+        
+        return BillCategory[category];
+    }
+
     initGraph(bills : IBill[]) : void{
         
         if (this.billChartComponent.isVisible){
@@ -74,6 +82,8 @@ export class BillListComponent implements OnInit {
         this.dirty = false;
         this.billChartComponent.show();
     }
+
+
  
 
 

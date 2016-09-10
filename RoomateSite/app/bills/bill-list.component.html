@@ -31,6 +31,7 @@
                 <thead>
                     <tr>
                         <th>Bill Title</th>
+                        <th>Category</th>
                         <th>Amount</th>
                         <th>Payed By</th>
                         <th>Date</th>
@@ -45,6 +46,7 @@
                                 {{ bill.billTitle }}
                             </a>
                         </td>
+                        <td>{{ showCategory(bill.category) }}</td>
                         <td>{{ bill.amount }}</td>
                         <td>{{ getUsernameById(bill.payerId) }}
                         <td>{{ bill.date | date: 'yyyy-MM-dd' }}</td>

@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { BillService } from './bill.service';
 import { UserService } from '../users/user.service';
-import { IBill } from './bill';
+import { IBill, BillCategory } from './bill';
 
 @Component({
     templateUrl: 'app/bills/bill-detail.component.html'
@@ -17,6 +17,7 @@ export class BillDetailComponent implements OnInit, OnDestroy{
     errorMessage: string;
     private sub: any;
     userName: string;
+    category: string;
 
     constructor(private route: ActivatedRoute,
         private router: Router, private _billService: BillService, private _userService: UserService) {
@@ -28,6 +29,10 @@ export class BillDetailComponent implements OnInit, OnDestroy{
                 let id = +params['id'];
                 this.getBill(id);
             });
+    }
+
+    getCategory(category : BillCategory){
+        this.category = BillCategory[category];
     }
 
 
@@ -47,6 +52,7 @@ export class BillDetailComponent implements OnInit, OnDestroy{
         if (bill){
             this.bill = bill;
             this.getUser(bill.payerId);
+            this.getCategory(bill.category);
         }
         
     }

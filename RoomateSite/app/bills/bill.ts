@@ -5,6 +5,7 @@ export interface IBill{
     date: Date;
     payerId: number;
     additionalInfo: string;
+    category: BillCategory;
     
 }
 
@@ -13,6 +14,7 @@ export class Bill implements IBill{
     constructor(
         public billId: number,
         public billTitle: string,
+        public category : BillCategory,
         public payerId: number,
         public amount: number,
         public date: Date,
@@ -20,4 +22,15 @@ export class Bill implements IBill{
         {}
   
 
+}
+
+export enum BillCategory {
+    None,
+    Electric,
+    Water,
+    Gas,
+    Municipal,
+    Vaad,
+    Shopping,
+    Other
 }

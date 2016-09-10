@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
-import { Bill, IBill } from './bill';
+import { Bill, IBill, BillCategory } from './bill';
 
 
 @Injectable()
@@ -17,12 +17,12 @@ export class BillService {
     getBills(): Observable<IBill[]> {
         return this._http.get(this._billsUrl)
             .map((response: Response) => <IBill[]>response.json())
-            .map(this.extractDate)
+            .map(this.specialParsing)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-     private extractDate(res: any) : IBill[] {
+     private specialParsing(res: any) : IBill[] {
          if (!res)
              return [];
 
@@ -37,13 +37,13 @@ export class BillService {
             .map((bills: IBill[]) => bills.find(p => p.billId === id));
     }
 
-    putBill(title: string, creator: number, amount: number, date: string, additionalInfo: string): IBill {
+    putBill(title: string, category:BillCategory, creator: number, amount: number, date: string, additionalInfo: string): IBill {
 
         var maxId: number;
         this.getBills()
             .map((bills: IBill[]) => maxId = Math.max.apply(Math, bills.map(function(o) { return o.billId; })));
 
-        return new Bill((maxId + 1), title, creator, amount, new Date(date), additionalInfo);
+        return new Bill((maxId + 1), title,category, creator, amount, new Date(date), additionalInfo);
     }
 
     addOrUpdateBill(bill: IBill) : IBill {
