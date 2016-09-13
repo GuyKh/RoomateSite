@@ -1,0 +1,46 @@
+<div class="col-md-5">
+
+
+    <table class="table table-hover">
+        <span><h2 style='color: #848484; font-family: arial,sans-serif; font-weight: 200;'>Summary</h2></span>
+
+        <tbody>
+            <tr>
+                <th scope="row"># of Bills:
+                </th>
+                <td>
+                    {{bills ? bills.length : 0}}
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    Average Monthly Pay for Appartment
+                </th>
+                <td>
+                    {{calculateAppartmentAverage() | number:'.0-2'}}
+                </td>
+            </tr>
+
+
+            <tr>
+                <th scope="row">
+                    <strong>Average Monthly Pay for Tennant</strong>
+                </th>
+                <td>
+                    {{calculateTennantAverage() | number:'.0-2'}}
+                </td>
+            </tr>
+
+            <tr *ngFor="let billAverage of calculateBillsByCategory()">
+                <th scope="row">
+                    <strong>Average Monthly Pay for {{billAverage.label}}</strong>
+                </th>
+                <td>
+                    {{billAverage.amount | number:'.0-2'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

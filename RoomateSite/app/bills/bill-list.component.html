@@ -40,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let bill of bills | billTitleFilter:listTitleFilter | billDateFilter:fromListFilter:toListFilter'>
+                    <tr *ngFor='let bill of bills | billTitleFilter:listTitleFilter | billDateFilter:fromListFilter:toListFilter | billSortFilter'>
                         <td>
                             <a [routerLink]="['/bill', bill.billId]">
                                 {{ bill.billTitle }}
@@ -49,29 +49,34 @@
                         <td>{{ showCategory(bill.category) }}</td>
                         <td>{{ bill.amount }}</td>
                         <td>{{ getUsernameById(bill.payerId) }}
-                        <td>{{ bill.date | date: 'yyyy-MM-dd' }}</td>
-                        <td>{{ bill.additionalInformation }}</td>
-                        <td>
-                            <a (click)="addBill(bill.billId)">
+                            <td>{{ bill.date | date: 'yyyy-MM-dd' }}</td>
+                            <td>{{ bill.additionalInformation }}</td>
+                            <td>
+                                <a (click)="addBill(bill.billId)">
                                 Edit
                             </a>
-                        </td>
+                            </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class='row'>
+            <bill-summary [bills]='bills | billTitleFilter:listTitleFilter | billDateFilter:fromListFilter:toListFilter | billSortFilter'></bill-summary>
+        </div>
 
+        <div class='row'>
             <div class="col-md-2">
                 <button type="button" class="btn btn-large btn-block btn-primary" (click)="addBill(-1)">Add New Bill</button>
             </div>
-            
+
 
             <div class="col-md-3">
                 <button type="button" class="btn btn-large btn-block btn-primary" (click)="initUserGraph(bills)">{{!(billChartComponent.isVisible && billChartComponent.Mode == "Users") ? 'Show' : 'Hide'}} Per User Graph</button>
                 <button type="button" class="btn btn-large btn-block btn-primary" (click)="initCategoryGraph(bills)">{{!(billChartComponent.isVisible && billChartComponent.Mode == "Categories") ? 'Show' : 'Hide'}} Per Category Graph</button>
             </div>
-
-
         </div>
+
+
         <div class='row'>
             <div>
                 <bill-chart></bill-chart>

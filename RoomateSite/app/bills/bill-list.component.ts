@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild }  from '@angular/core';
 import {AddBillComponent} from './bill-add.component';
 import { BillChartComponent } from './bill-chart.component';
+import { BillSummaryComponent } from './bill-summary.component';
 
 
 import { IUser } from '../users/user';
