@@ -97,6 +97,7 @@ export class AddBillComponent {
     }
 
     hide() {
+        $('#addBillModal').modal('hide');
 
         this.ModalIsVisible = false;
     }
@@ -121,6 +122,9 @@ export class AddBillComponent {
     }
 
     get humanCategory() {
+        if (!this.categories)
+            return "";
+
         if (!this.category)
             return this.categories[0];
         else 

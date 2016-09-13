@@ -32,7 +32,10 @@ export class BillListComponent implements OnInit {
     @ViewChild(BillChartComponent) billChartComponent: BillChartComponent;
     
     addBill(billId: number):void {
+        
+        $('#addBillModal').modal('show');
         this.addBillComponent.init(billId);
+
         //this.addUserComponent.show();
     }
 
