@@ -39,8 +39,8 @@ this.errorMessage = "";
         }
     }
 
-    show(){
-        this.ModalIsVisible = true;
+    show(){      
+        //this.ModalIsVisible = true;
     }
 
 
@@ -51,7 +51,9 @@ this.errorMessage = "";
 
     hide(){
 
-        this.ModalIsVisible = false;
+        
+        $('#addUserModal').modal('hide');
+        //this.ModalIsVisible = false;
     }
     
 

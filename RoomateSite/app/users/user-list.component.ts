@@ -24,6 +24,8 @@ export class UserListComponent implements OnInit {
     @ViewChild(AddUserComponent) addUserComponent: AddUserComponent;
 
     addUser(userId: number){
+        
+        $('#addUserModal').modal('show');
         this.addUserComponent.init(userId);
         //this.addUserComponent.show();
     }
