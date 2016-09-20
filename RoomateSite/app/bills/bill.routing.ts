@@ -9,5 +9,4 @@ export const billRoutes: Routes = [
     { path: 'bill/:id', component: BillDetailComponent }
 ];
 
-export const billRouting: ModuleWithProviders =
-    RouterModule.forChild(billRoutes);
+export const billRouting: ModuleWithProviders = RouterModule.forChild(billRoutes);

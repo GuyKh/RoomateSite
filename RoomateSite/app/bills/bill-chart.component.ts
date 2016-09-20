@@ -80,7 +80,7 @@ public initializeByCategories(bills : IBill[]) : void {
             }
 
 
-            let lineCategoryData : { data : number[], label: string} = {};
+            let lineCategoryData : { data : number[], label: string} = {data: [], label: ""};
             lineCategoryData.data = userData;
             lineCategoryData.label = BillCategory[category];
             this.lineChartData.push(lineCategoryData); 
@@ -166,7 +166,7 @@ public initializeByUsers(bills : IBill[]) : void {
             }
 
 
-            let lineUserData : { data : number[], label: string} = {};
+            let lineUserData : { data : number[], label: string} = { data: [], label: ""};
             lineUserData.data = userData;
             lineUserData.label = this.getUserById(parseInt(payerId));
             this.lineChartData.push(lineUserData); 
