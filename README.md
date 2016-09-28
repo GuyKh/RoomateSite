@@ -1,5 +1,3 @@
-# RoomateSite
-Angular2 application for roomates
+This is the Angular 2 part of the site.
 
-So - playing with Angular2 I came up with this idea... a way for roomates to work together.
-Starting with the bills expense report.
+Run `npm start` in this folder to start the site
