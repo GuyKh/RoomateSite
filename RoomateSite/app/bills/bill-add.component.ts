@@ -103,16 +103,16 @@ export class AddBillComponent {
     }
 
 
-    set humanDate(e) {
-        e = e.split('-');
-        let d = new Date(Date.UTC(e[0], e[1] - 1, e[2]));
+    set humanDate(e : string) {
+        var splitStr = e.split('-');
+        let d = new Date(Date.UTC(parseInt(splitStr[0]), parseInt(splitStr[1]) - 1, parseInt(splitStr[2]));
         this.date.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1);
     }
 
     get humanDate() {
         if (this.date && this.date instanceof Date)
             return this.date.toISOString().substring(0, 10);
-        else if (this.date && this.date instanceof String)
+        else if (this.date && this.date instanceof string)
             return this.date;
         else return "";
     }
