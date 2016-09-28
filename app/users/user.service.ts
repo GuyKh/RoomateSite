@@ -17,7 +17,7 @@ export class UserService {
     getUsers(): Observable<IUser[]> {
         return this._http.get(this._usersUrl)
             .map((response: Response) => <IUser[]>response.json())
-            .do(data => console.log("All: " +  JSON.stringify(data)))
+            .do(data => console.log('All: ' +  JSON.stringify(data)))
             .catch(this.handleError);
     }
 
@@ -27,16 +27,16 @@ export class UserService {
             .map((users: IUser[]) => users.find(p => p.userId === id));
     }
 
-    addOrUpdateUser(user: IUser){
-        if (user.userId > 0){
-            console.log('Update user with id:'+user.userId);
+    addOrUpdateUser(user: IUser) {
+        if (user.userId > 0) {
+            console.log('Update user with id:' + user.userId);
         } else {
-            console.log('Create a new User with username:'+user.userName + " and phone: "+user.phone);
+            console.log('Create a new User with username:' + user.userName + ' and phone: ' + user.phone);
         }
     }
 
-    deleteUser(userId: number){
-        console.log("Delete User: " + userId);
+    deleteUser(userId: number) {
+        console.log('Delete User: ' + userId);
     }
 
     private handleError(error: Response) {

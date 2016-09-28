@@ -2,8 +2,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Subscription } from 'rxjs/Subscription';
-
 import { BillService } from './bill.service';
 import { UserService } from '../users/user.service';
 import { IBill, BillCategory } from './bill';
@@ -11,7 +9,7 @@ import { IBill, BillCategory } from './bill';
 @Component({
     templateUrl: 'app/bills/bill-detail.component.html'
 })
-export class BillDetailComponent implements OnInit, OnDestroy{
+export class BillDetailComponent implements OnInit, OnDestroy {
     pageTitle: string = 'Bill Detail';
     bill: IBill;
     errorMessage: string;
@@ -31,12 +29,12 @@ export class BillDetailComponent implements OnInit, OnDestroy{
             });
     }
 
-    getCategory(category : BillCategory){
+    getCategory(category: BillCategory) {
         this.category = BillCategory[category];
     }
 
 
-    getUser(id: number){
+    getUser(id: number) {
         this._userService.getUser(id).subscribe(
             user => this.userName = user.userName,
             error => this.errorMessage = <any>error);
@@ -48,16 +46,16 @@ export class BillDetailComponent implements OnInit, OnDestroy{
             error => this.errorMessage = <any>error);
     }
 
-    setBill(bill: IBill){
-        if (bill){
+    setBill(bill: IBill) {
+        if (bill) {
             this.bill = bill;
             this.getUser(bill.payerId);
             this.getCategory(bill.category);
         }
-        
+
     }
 
-    onBack(): void{
+    onBack(): void {
         this.router.navigate(['bills']);
     }
 

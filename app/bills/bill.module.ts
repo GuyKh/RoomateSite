@@ -34,7 +34,7 @@ import { BillSummaryComponent } from './bill-summary.component';
     BillSortFilterPipe
   ],
   providers: [
-    BillService, 
+    BillService,
     UserService
   ]
 })

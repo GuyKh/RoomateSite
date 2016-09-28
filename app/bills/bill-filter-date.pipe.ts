@@ -6,25 +6,27 @@ import {IBill} from './bill';
 })
 export class BillDateFilterPipe implements PipeTransform {
 
-    transform(value: IBill[], from: string, to:string): IBill[] {
+    transform(value: IBill[], from: string, to: string): IBill[] {
         from = from ? from.toLocaleLowerCase() : null;
         to = to ? to.toLocaleLowerCase() : null;
 
-        if (!from && !to)
-            return value;   //null
+        if (!from && !to) {
+            return value;   // null
+        }
 
         let fromDate: Date;
-        if (!from)
+        if (!from) {
             fromDate = new Date(-8640000000000000);
-        else
+        } else {
             fromDate = new Date(from);
+        }
 
         let toDate: Date;
-        if (!to)
+        if (!to) {
             toDate = new Date(8640000000000000);
-        else
+        } else {
             toDate = new Date(from);
-        
+        }
 
         return value.filter((bill: IBill) =>
             bill.date >= fromDate && bill.date <= toDate);

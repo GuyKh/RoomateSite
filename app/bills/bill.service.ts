@@ -22,11 +22,12 @@ export class BillService {
             .catch(this.handleError);
     }
 
-     private specialParsing(res: any) : IBill[] {
-         if (!res)
+     private specialParsing(res: any): IBill[] {
+         if (!res) {
              return [];
+         }
 
-         res.forEach((d : IBill) => {
+         res.forEach((d: IBill) => {
              d.date = new Date(d.date.toString());
          });
          return res;
@@ -37,31 +38,31 @@ export class BillService {
             .map((bills: IBill[]) => bills.find(p => p.billId === id));
     }
 
-    putBill(title: string, category:BillCategory, creator: number, amount: number, date: string, additionalInfo: string): IBill {
+    putBill(title: string, category: BillCategory, creator: number, amount: number, date: string, additionalInfo: string): IBill {
 
-        var maxId: number;
+        let maxId: number;
         this.getBills()
             .map((bills: IBill[]) => maxId = Math.max.apply(Math, bills.map(function(o) { return o.billId; })));
 
-        return new Bill((maxId + 1), title,category, creator, amount, new Date(date), additionalInfo);
+        return new Bill((maxId + 1), title, category, creator, amount, new Date(date), additionalInfo);
     }
 
-    addOrUpdateBill(bill: IBill) : IBill {
+    addOrUpdateBill(bill: IBill): IBill {
 
-        if (bill.billId == -1) {
-            var maxId: number;
+        if (bill.billId === -1) {
+            let maxId: number;
             this.getBills().map((bills: IBill[]) => maxId = Math.max.apply(Math, bills.map(function (o) { return o.billId; })));
 
             bill.billId = maxId + 1;
         }
 
-        console.log("Adding or Updating bill " + bill.billId);
+        console.log('Adding or Updating bill ' + bill.billId);
 
         return bill;
     }
 
     deleteBill(billId: number) {
-        console.log("Deleting Bill " + billId);
+        console.log('Deleting Bill ' + billId);
     }
 
     private handleError(error: Response) {
@@ -70,7 +71,4 @@ export class BillService {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }
-
-
-
 }

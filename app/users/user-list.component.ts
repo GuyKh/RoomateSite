@@ -1,14 +1,13 @@
 ﻿import { Component, OnInit, ViewChild  }  from '@angular/core';
 
 
-
-import { IUser } from './user'
+import { IUser } from './user';
 import { UserService } from './user.service';
 import {AddUserComponent} from './user-add.component';
 
 @Component({
     templateUrl: 'app/users/user-list.component.html',
-    styleUrls: ['app/users/user-list.component.css'] 
+    styleUrls: ['app/users/user-list.component.css']
 
 })
 export class UserListComponent implements OnInit {
@@ -17,21 +16,22 @@ export class UserListComponent implements OnInit {
     errorMessage: string;
     users: IUser[];
 
+    @ViewChild(AddUserComponent) addUserComponent: AddUserComponent;
+
     constructor(private _userService: UserService) {
 
     }
 
-    @ViewChild(AddUserComponent) addUserComponent: AddUserComponent;
 
-    addUser(userId: number){
-        
+
+    addUser(userId: number) {
         $('#addUserModal').modal('show');
         this.addUserComponent.init(userId);
-        //this.addUserComponent.show();
+        // this.addUserComponent.show();
     }
 
 
-    deleteUser(userId: number){
+    deleteUser(userId: number) {
         this._userService.deleteUser(userId);
     }
 

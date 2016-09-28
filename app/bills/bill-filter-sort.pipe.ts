@@ -4,24 +4,25 @@ import {IBill} from './bill';
 @Pipe({
     name: 'billSortFilter'
 })
-export class BillSortFilterPipe implements PipeTransform{
+export class BillSortFilterPipe implements PipeTransform {
 
     // Sort bills descending
-    transform(value: IBill[], args: string): IBill[]{
+    transform(value: IBill[], args: string): IBill[] {
 
-        if (!value)
+        if (!value) {
             return null;
+        }
 
-         value.sort((a: IBill, b:IBill) => {
-             if (a.date > b.date){
+         value.sort((a: IBill, b: IBill) => {
+             if (a.date > b.date) {
                 return -1;
-             } else if (a.date < b.date){
-                 return 1
+             } else if (a.date < b.date) {
+                 return 1;
              } else {
-                 return 0
+                 return 0;
          }
         });
         return value;
-            
+
     }
 }

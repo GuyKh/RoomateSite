@@ -1,4 +1,4 @@
-export interface IBill{
+export interface IBill {
     billId: number;
     billTitle: string;
     amount: number;
@@ -6,21 +6,21 @@ export interface IBill{
     payerId: number;
     additionalInfo: string;
     category: BillCategory;
-    
+
 }
 
-export class Bill implements IBill{
+export class Bill implements IBill {
 
-    constructor(
+    constructor (
         public billId: number,
         public billTitle: string,
-        public category : BillCategory,
+        public category: BillCategory,
         public payerId: number,
         public amount: number,
         public date: Date,
-        public additionalInfo: string)
-        {}
-  
+        public additionalInfo: string) {
+
+        }
 
 }
 

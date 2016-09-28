@@ -4,6 +4,7 @@ import {UserService} from '../users/user.service';
 import {IUser} from '../users/user';
 import {Bill, BillCategory} from './bill';
 
+
 @Component({
     selector: 'bill-add',
     templateUrl: 'app/bills/bill-add.component.html'
@@ -17,27 +18,27 @@ export class AddBillComponent {
     private date: any;
     private additionalInfo: string;
     private errorMessage: string;
-    private users : IUser[];
+    private users: IUser[];
 
     private categories: string[];
     public ModalIsVisible: boolean;
 
 
 
-    constructor(private _billService: BillService, private _userService:UserService) {
+    constructor(private _billService: BillService, private _userService: UserService) {
     }
 
 
     init(billId: number) {
-        this.errorMessage = "";
-        if (billId == -1) {
+        this.errorMessage = '';
+        if (billId === -1) {
             this.billId = billId;
-            this.title = "";
+            this.title = '';
             this.category = BillCategory.Electric;
             this.payerId = this.getCurrentUserID();
             this.amount = 0;
-            this.date = new Date(); //now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay();
-            this.additionalInfo = "";
+            this.date = new Date(); // now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay();
+            this.additionalInfo = '';
             this.show();
         } else {
             this._billService.getBill(billId)
@@ -61,19 +62,20 @@ export class AddBillComponent {
         this.categories = this.getCategories();
     }
 
-    getCategories() : string[]{
-        var categories: string[] = [];
-        for(var n in BillCategory) {
-            var enumVal = BillCategory[parseInt(n)];
-            if (enumVal && typeof(enumVal) === "string")
-                categories.push(enumVal);
+    getCategories(): string[] {
+        let categories: string[] = [];
+        for (let n in BillCategory) {
+            if (n !== undefined) {
+                let enumVal = BillCategory[parseInt(n, 10)];
+                if (enumVal && typeof(enumVal) === 'string') {
+                    categories.push(enumVal);
+                }
+            }
         }
         return categories;
     }
-    
-    
 
-    getUsers() : void {
+    getUsers(): void {
         this._userService.getUsers()
             .subscribe(
                 (users: IUser[]) => this.users = users,
@@ -81,18 +83,19 @@ export class AddBillComponent {
             );
     }
 
-    getCurrentUserID() : number{
+    getCurrentUserID(): number {
         return 1;
     }
 
     getUser(userId: number): IUser {
-        let user : IUser = this.users.find(u => u.userId === userId);
+        let user: IUser = this.users.find(u => u.userId === userId);
 
         return user;
     }
 
     addOrUpdateBill() {
-        this._billService.addOrUpdateBill(new Bill(this.billId, this.title, this.category, this.payerId, this.amount, this.date, this.additionalInfo));
+        this._billService.addOrUpdateBill(
+            new Bill(this.billId, this.title, this.category, this.payerId, this.amount, this.date, this.additionalInfo));
         this.hide();
     }
 
@@ -103,18 +106,19 @@ export class AddBillComponent {
     }
 
 
-    set humanDate(e : string) {
-        var splitStr = e.split('-');
-        let d = new Date(Date.UTC(parseInt(splitStr[0]), parseInt(splitStr[1]) - 1, parseInt(splitStr[2])));
+    set humanDate(e: string) {
+        let splitStr = e.split('-');
+        let d = new Date(Date.UTC(parseInt(splitStr[0], 10), parseInt(splitStr[1], 10) - 1, parseInt(splitStr[2], 10)));
         this.date.setFullYear(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1);
     }
 
     get humanDate() {
-        if (this.date && this.date instanceof Date)
+        if (this.date && this.date instanceof Date) {
             return this.date.toISOString().substring(0, 10);
-        else if (this.date && this.date instanceof String)
-            return this.date;
-        else return "";
+        } else if (this.date && this.date instanceof String) {
+            return this.date as string;
+        }
+        return '';
     }
 
     set humanCategory(e) {
@@ -122,13 +126,14 @@ export class AddBillComponent {
     }
 
     get humanCategory() {
-        if (!this.categories)
-            return "";
-
-        if (!this.category)
+        if (!this.categories) {
+            return '';
+        }
+        if (!this.category) {
             return this.categories[0];
-        else 
+        } else {
             return this.categories[this.category];
+        }
     }
 
 }
