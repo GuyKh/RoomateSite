@@ -8,5 +8,17 @@
         "url": "http://localhost:3000",
         "sourceMaps": true,
         "webRoot": "${workspaceRoot}"
+    },
+    {
+        "name": "Launch via NPM",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "runtimeExecutable": "npm",
+        "windows": {
+            "runtimeExecutable": "npm.cmd"
+            },
+        "runtimeArgs": ["run-script", "start"],
+        "port": 3001
     }
 ]}
